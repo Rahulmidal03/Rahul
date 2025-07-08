@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wearfable – Fearless Tee</title>
+  <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+  <nav class="p-4 flex justify-between items-center shadow">
+    <div class="text-2xl font-bold text-blue-800">Wearfable</div>
+    <div>
+      <a href="#" class="px-3">Home</a>
+      <a href="#" class="px-3">Shop</a>
+      <a href="#" class="px-3">Contact</a>
+    </div>
+  </nav>
+  <main class="max-w-6xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="space-y-4">
+      <img src="fearless-kind-model.jpg" alt="Fearless but Kind T-shirt" class="w-full rounded-lg shadow" />
+      <div class="flex space-x-2">
+        <img src="fearless-kind-model.jpg" class="w-20 h-20 object-cover rounded-md cursor-pointer" />
+        <img src="fearless-kind-model.jpg" class="w-20 h-20 object-cover rounded-md cursor-pointer" />
+      </div>
+    </div>
+    <div>
+      <h1 class="text-3xl font-semibold mb-2">Fearless but Kind Tee</h1>
+      <p class="text-xl text-blue-600 mb-4">₹699</p>
+      <div id="shopify-button"></div>
+      <p class="mt-6 text-gray-600">Oversized fit, 100% cotton, designed for comfort and confidence. Perfect for those who lead with strength and kindness.</p>
+      <button class="mt-4 text-sm text-blue-500 underline">View Size Guide</button>
+    </div>
+  </main>
+  <footer class="bg-gray-100 p-6 text-center text-gray-600">
+    © 2025 Wearfable. All rights reserved. | Contact: rahulkumarmidal@gmail.com
+  </footer>
+  <script>
+    var client = ShopifyBuy.buildClient({
+      domain: 'YOUR_SHOPIFY_DOMAIN.myshopify.com',
+      storefrontAccessToken: 'YOUR_STOREFRONT_ACCESS_TOKEN'
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: 'PRODUCT_ID',
+        node: document.getElementById('shopify-button'),
+        moneyFormat: '%E2%82%B9{{amount}}',
+        options: {
+          product: { buttonDestination: 'checkout', layout: 'vertical', width: '100%' },
+          cart: { startOpen: false }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
